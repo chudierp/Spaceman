@@ -123,7 +123,8 @@ def spaceman(secret_word):
         print (get_guessed_word(secret_word,letters_guessed))
         is_word_guessed(secret_word, letters_guessed)
         if numberofguess == 0:
-            print('GAME OVER!')    
+            print('GAME OVER!The word was', secret_word)
+            
 
 #These function calls that will start the game
 secret_word = load_word()
