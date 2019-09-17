@@ -28,11 +28,12 @@ def is_word_guessed(secret_word, letters_guessed):
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in letters_guessed
     
-    if letters_guessed == secret_word:
-        secret_word = True
-        print('YOU WON!')
-    else:
-        secret_word = False
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
+
+    return True
+           
         
         
 
@@ -102,6 +103,7 @@ def spaceman(secret_word):
         print(f'You have {numberofguess} guesses left')
         print(get_guessed_word(secret_word, letters_guessed))
         guess=(input('Please guess a letter: '))
+        guess = guess.lower()
         letters_guessed.append(guess)
         if is_guess_in_word(guess,secret_word) is False: #Have to place the parenthesis anytime you're calling a function
             numberofguess -= 1
@@ -109,7 +111,7 @@ def spaceman(secret_word):
         else:
             
             print('result came back true')
-         
+        print(numberofguess)
     
         #TODO: Check if the guessed letter is in the secret or not and give the player feedback
         
@@ -121,11 +123,17 @@ def spaceman(secret_word):
 
         is_guess_in_word(guess, secret_word)
         print (get_guessed_word(secret_word,letters_guessed))
-        is_word_guessed(secret_word, letters_guessed)
+        
+        result = is_word_guessed(secret_word, letters_guessed)
+        if result == True:
+            print('YOU WON!')
+            break
         if numberofguess == 0:
             print('GAME OVER!The word was', secret_word)
+            break
             
 
 #These function calls that will start the game
 secret_word = load_word()
+print(secret_word)
 spaceman(secret_word)
