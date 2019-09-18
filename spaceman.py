@@ -106,6 +106,7 @@ def spaceman(secret_word):
         #allowing word detection regardless of casing
         guess = guess.lower()
         #catching already guessed letters and telling the user to guess a new letter
+        
         if guess in letters_guessed:
             print('Letter has already been guessed, guess a new letter')
         else:     
@@ -137,8 +138,19 @@ def spaceman(secret_word):
             print('GAME OVER!The word was', secret_word)
             break
             
-
-#These function calls that will start the game
+def play_again():
+    guess=(input('Play Again?(Y/N'))
+    guess = guess.lower()
+    if guess == 'y':
+        return True
+    else:
+        return False
 secret_word = load_word()
 print(secret_word)
 spaceman(secret_word)
+
+while play_again():
+#These function calls that will start the game
+    secret_word = load_word()
+    print(secret_word)
+    spaceman(secret_word)
