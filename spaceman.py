@@ -103,15 +103,20 @@ def spaceman(secret_word):
         print(f'You have {numberofguess} guesses left')
         print(get_guessed_word(secret_word, letters_guessed))
         guess=(input('Please guess a letter: '))
+        #allowing word detection regardless of casing
         guess = guess.lower()
-        letters_guessed.append(guess)
-        if is_guess_in_word(guess,secret_word) is False: #Have to place the parenthesis anytime you're calling a function
-            numberofguess -= 1
-            print('result came back false')
-        else:
+        #catching already guessed letters and telling the user to guess a new letter
+        if guess in letters_guessed:
+            print('Letter has already been guessed, guess a new letter')
+        else:     
+            if is_guess_in_word(guess,secret_word) is False: #Have to place the parenthesis anytime you're calling a function
+                numberofguess -= 1
+                print('result came back false')
+            else:
             
-            print('result came back true')
+                print('result came back true')
         print(numberofguess)
+        letters_guessed.append(guess)
     
         #TODO: Check if the guessed letter is in the secret or not and give the player feedback
         
@@ -127,7 +132,7 @@ def spaceman(secret_word):
         result = is_word_guessed(secret_word, letters_guessed)
         if result == True:
             print('YOU WON!')
-            break
+            break #exit out of the loop
         if numberofguess == 0:
             print('GAME OVER!The word was', secret_word)
             break
