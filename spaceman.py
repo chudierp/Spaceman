@@ -145,12 +145,27 @@ def play_again():
         return True
     else:
         return False
-secret_word = load_word()
-print(secret_word)
-spaceman(secret_word)
 
-while play_again():
-#These function calls that will start the game
+
+# secret_word = load_word()
+# print(secret_word)
+# spaceman(secret_word)
+
+# while play_again():
+# #These function calls that will start the game
+#     secret_word = load_word()
+#     print(secret_word)
+#     spaceman(secret_word)
+
+if  __name__== '__main__':
     secret_word = load_word()
     print(secret_word)
     spaceman(secret_word)
+
+    while play_again():
+    #These function calls that will start the game
+        secret_word = load_word()
+        print(secret_word)
+        spaceman(secret_word)
+
+     
